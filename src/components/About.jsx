@@ -38,8 +38,8 @@ const About = () => (
       <div className="about-wrap fade-in-section">
         <div className="about-body">
           <p>
-            I am an <strong>AI Engineer</strong> with 1+ year of production experience building and
-            deploying large-scale AI systems for media intelligence at{' '}
+            I am an <strong>AI Engineer</strong> with 1+ year of hands-on AI/ML experience,
+            currently building and deploying large-scale AI systems for media intelligence at{' '}
             <span className="about-hl">NoLimit Indonesia</span>.
           </p>
           <p>
