@@ -8,10 +8,8 @@ const Hero = () => {
   const [roleIdx, setRoleIdx] = useState(0);
   const [charIdx, setCharIdx] = useState(0);
   const [deleting, setDeleting] = useState(false);
-  const [paused, setPaused] = useState(false);
 
   useEffect(() => {
-    if (paused) return;
     const target = ROLES[roleIdx];
     let timer;
     if (!deleting) {
@@ -21,11 +19,8 @@ const Hero = () => {
           setCharIdx(c => c + 1);
         }, 110);
       } else {
-        setPaused(true);
-        timer = setTimeout(() => {
-          setPaused(false);
-          setDeleting(true);
-        }, 2200);
+        // pause at full word, then start deleting
+        timer = setTimeout(() => setDeleting(true), 2200);
       }
     } else {
       if (charIdx > 0) {
@@ -39,7 +34,7 @@ const Hero = () => {
       }
     }
     return () => clearTimeout(timer);
-  }, [charIdx, deleting, roleIdx, paused]);
+  }, [charIdx, deleting, roleIdx]);
 
   return (
     <section id="home" className="hero-section">

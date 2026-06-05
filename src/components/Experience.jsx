@@ -88,7 +88,6 @@ const Experience = () => {
     <section id="experience" className="section">
       <div className="container">
         <div className="section-header fade-in-section">
-          <span className="section-label">Journey</span>
           <h2 className="section-title">Experience & Education</h2>
         </div>
 

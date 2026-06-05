@@ -126,7 +126,6 @@ const Projects = () => {
     <section id="projects" className="section">
       <div className="container">
         <div className="section-header fade-in-section" style={{ textAlign: 'center' }}>
-          <span className="section-label">Portfolio</span>
           <h2 className="section-title">Projects</h2>
           <p className="section-sub" style={{ margin: '0 auto' }}>
             {PROJECTS.length} projects spanning LLM agents, NLP, ML, computer vision, and data science.
