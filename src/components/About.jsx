@@ -39,8 +39,7 @@ const About = () => (
         <div className="about-body">
           <p>
             I am an <strong>AI Engineer</strong> with 1+ year of hands-on AI/ML experience,
-            currently building and deploying large-scale AI systems for media intelligence at{' '}
-            <span className="about-hl">NoLimit Indonesia</span>.
+            specializing in building and deploying large-scale AI systems for media intelligence.
           </p>
           <p>
             I designed and shipped a <strong>4-agent LLM pipeline</strong>{' '}
