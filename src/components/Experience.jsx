@@ -4,7 +4,7 @@ const WORK = [
   {
     role: 'Data Scientist Staff',
     org: 'NoLimit Indonesia',
-    date: 'Mar 2024 – Present',
+    date: 'Mar – June 2026 ',
     location: 'Bandung, On-Site · Contract',
     type: 'work',
     points: [
