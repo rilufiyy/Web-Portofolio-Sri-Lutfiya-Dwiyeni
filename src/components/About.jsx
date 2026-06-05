@@ -27,13 +27,6 @@ const SKILL_GROUPS = [
   },
 ];
 
-const AWARDS = [
-  '🏆 MVP Award — Dibimbing.id',
-  '🥇 Best Final Project — Dibimbing.id',
-  '🎖 Top 50 / 644 Teams — Bangkit 2024',
-  '📄 HAKI Patent — LSTM-GWO (2025)',
-  '🥈 Silver Medal — ISSO 3 Math Olympiad',
-];
 
 const About = () => (
   <section id="about" className="section">
@@ -64,12 +57,6 @@ const About = () => (
             deployment (FastAPI, Docker, MinIO, PostgreSQL). Author of a{' '}
             <strong>HAKI-registered patent</strong> on LSTM-GWO modeling (May 2025).
           </p>
-
-          <div className="awards-row">
-            {AWARDS.map((a, i) => (
-              <span key={i} className="award-chip">{a}</span>
-            ))}
-          </div>
         </div>
 
         <div className="skills-col">

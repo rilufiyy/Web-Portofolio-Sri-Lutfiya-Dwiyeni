@@ -829,6 +829,61 @@ ul { list-style: none; }
 .project-link:hover { gap: 10px; color: var(--accent-2); }
 
 /* ========================
+   Awards
+   ======================== */
+.awards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.award-card {
+  border: 1px solid;
+  border-radius: 14px;
+  padding: 22px 24px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.award-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+}
+
+.award-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.award-icon {
+  font-size: 1.8rem;
+  line-height: 1;
+}
+
+.award-date {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+.award-title {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.4;
+  margin-bottom: 8px;
+}
+
+.award-org {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+/* ========================
    Contact
    ======================== */
 .contact-section {
