@@ -7,7 +7,6 @@ const Contact = () => (
     <div className="blob blob-2" style={{ opacity: 0.05 }} />
     <div className="container">
       <div className="contact-inner fade-in-section">
-        <span className="section-label">Contact</span>
         <h2 className="contact-title">Let's Work Together</h2>
         <p className="contact-desc">
           Currently open to AI Engineering roles, ML collaborations, and freelance projects.

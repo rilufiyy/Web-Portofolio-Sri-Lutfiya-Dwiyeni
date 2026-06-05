@@ -39,7 +39,6 @@ const About = () => (
   <section id="about" className="section">
     <div className="container">
       <div className="section-header fade-in-section">
-        <span className="section-label">About</span>
         <h2 className="section-title">About Me</h2>
       </div>
 
