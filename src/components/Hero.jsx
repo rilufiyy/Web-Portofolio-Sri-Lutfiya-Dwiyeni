@@ -54,7 +54,7 @@ const Hero = () => {
           </h2>
           <p className="hero-bio">
             AI Engineer with <strong>1+ year of hands-on AI/ML experience</strong> building
-            production-grade LLM systems at scale — processing <strong>100K+ daily posts</strong> across
+            production-grade LLM systems at scale, processing <strong>100K+ daily posts</strong> across
             7 social media platforms. Specializing in Agentic AI, RAG, and NLP.
             Strong math foundation — S1 Matematika Undip, GPA 3.60.
           </p>
