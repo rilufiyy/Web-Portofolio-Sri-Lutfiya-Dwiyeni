@@ -1,44 +1,91 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
+
+const ROLES = ['AI Engineer', 'ML Engineer', 'Data Scientist'];
 
 const Hero = () => {
+  const [displayed, setDisplayed] = useState('');
+  const [roleIdx, setRoleIdx] = useState(0);
+  const [charIdx, setCharIdx] = useState(0);
+  const [deleting, setDeleting] = useState(false);
+  const [paused, setPaused] = useState(false);
+
+  useEffect(() => {
+    if (paused) return;
+    const target = ROLES[roleIdx];
+    let timer;
+    if (!deleting) {
+      if (charIdx < target.length) {
+        timer = setTimeout(() => {
+          setDisplayed(target.slice(0, charIdx + 1));
+          setCharIdx(c => c + 1);
+        }, 110);
+      } else {
+        setPaused(true);
+        timer = setTimeout(() => {
+          setPaused(false);
+          setDeleting(true);
+        }, 2200);
+      }
+    } else {
+      if (charIdx > 0) {
+        timer = setTimeout(() => {
+          setDisplayed(target.slice(0, charIdx - 1));
+          setCharIdx(c => c - 1);
+        }, 55);
+      } else {
+        setDeleting(false);
+        setRoleIdx(i => (i + 1) % ROLES.length);
+      }
+    }
+    return () => clearTimeout(timer);
+  }, [charIdx, deleting, roleIdx, paused]);
+
   return (
-    <section id="home" className="section" style={{ 
-      minHeight: '100vh', 
-      display: 'flex', 
-      alignItems: 'center',
-      paddingTop: '80px'
-    }}>
-      <div className="container">
-        <div style={{ maxWidth: '800px' }}>
-          <p style={{ color: 'var(--accent-color)', fontWeight: 600, fontSize: '1.2rem', marginBottom: '1rem' }}>
-            Hi, my name is
-          </p>
-          <h1 style={{ fontSize: '4.5rem', lineHeight: 1.1, marginBottom: '1rem' }}>
-            Sri Lutfiya Dwiyeni.
+    <section id="home" className="hero-section">
+      <div className="blob blob-1" />
+      <div className="blob blob-2" />
+      <div className="blob blob-3" />
+      <div className="container hero-inner">
+        <div className="hero-text">
+          <p className="hero-greeting">Hi, I am 👋</p>
+          <h1 className="hero-name">
+            Sri Lutfiya<br />Dwiyeni.
           </h1>
-          <h2 style={{ fontSize: '3.5rem', color: 'var(--text-secondary)', lineHeight: 1.1, marginBottom: '2rem' }}>
-            I build intelligent AI systems.
+          <h2 className="hero-role">
+            I am a{' '}
+            <span className="role-typed">{displayed}</span>
+            <span className="cursor">|</span>
           </h2>
-          <p style={{ fontSize: '1.2rem', color: 'var(--text-secondary)', marginBottom: '3rem', maxWidth: '600px' }}>
-            I'm an AI Engineer with production experience in building and deploying large-scale AI systems, specializing in NLP, RAG, and Agentic Pipelines.
+          <p className="hero-bio">
+            AI Engineer with <strong>1+ year of production experience</strong> at NoLimit Indonesia,
+            building large-scale LLM systems processing <strong>100K+ daily posts</strong> across 7 social
+            media platforms. Specializing in Agentic AI, RAG, and NLP.
+            Strong math foundation — S1 Matematika Undip, GPA 3.60.
           </p>
-          <div style={{ display: 'flex', gap: '20px' }}>
-            <a href="#projects" className="btn-primary">
-              Check out my work
+          <div className="hero-cta">
+            <a href="#projects" className="btn-primary">Explore My Work</a>
+            <a href="#contact" className="btn-outline">Get In Touch</a>
+          </div>
+          <div className="hero-socials">
+            <a
+              href="https://github.com/rilufiyy"
+              target="_blank"
+              rel="noreferrer"
+              className="social-btn"
+            >
+              <FaGithub size={16} /> GitHub
             </a>
-            <a href="https://github.com/rilufiyy" target="_blank" rel="noreferrer" className="btn-primary" style={{
-              background: 'transparent',
-              border: '1px solid var(--accent-color)',
-              boxShadow: 'none'
-            }}>
-              GitHub
+            <a
+              href="https://www.linkedin.com/in/sri-lutfiya-dwiyeni/"
+              target="_blank"
+              rel="noreferrer"
+              className="social-btn"
+            >
+              <FaLinkedin size={16} /> LinkedIn
             </a>
-            <a href="https://www.linkedin.com/in/sri-lutfiya-dwiyeni/" target="_blank" rel="noreferrer" className="btn-primary" style={{
-              background: 'transparent',
-              border: '1px solid var(--accent-secondary)',
-              boxShadow: 'none'
-            }}>
-              LinkedIn
+            <a href="mailto:srilutfiyadwiy@gmail.com" className="social-btn">
+              <FaEnvelope size={16} /> Email
             </a>
           </div>
         </div>

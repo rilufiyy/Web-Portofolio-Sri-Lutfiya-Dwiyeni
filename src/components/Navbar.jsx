@@ -1,38 +1,47 @@
 import React, { useState, useEffect } from 'react';
+import { HiMenuAlt3, HiX } from 'react-icons/hi';
+
+const LINKS = [
+  { href: '#about', label: 'About' },
+  { href: '#experience', label: 'Experience' },
+  { href: '#projects', label: 'Projects' },
+  { href: '#contact', label: 'Contact' },
+];
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-    };
+    const handleScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (
-    <nav style={{
-      position: 'fixed',
-      top: 0,
-      width: '100%',
-      padding: scrolled ? '15px 0' : '25px 0',
-      background: scrolled ? 'rgba(10, 10, 15, 0.9)' : 'transparent',
-      backdropFilter: scrolled ? 'blur(10px)' : 'none',
-      borderBottom: scrolled ? '1px solid rgba(255,255,255,0.05)' : 'none',
-      transition: 'all 0.3s ease',
-      zIndex: 1000
-    }}>
-      <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-        <a href="#home" style={{ fontSize: '1.5rem', fontWeight: 800, color: '#fff' }}>
+    <nav className={`navbar${scrolled ? ' scrolled' : ''}`}>
+      <div className="navbar-inner">
+        <a href="#home" className="navbar-brand">
           Sri Lutfiya<span className="text-gradient">.</span>
         </a>
-        <div style={{ display: 'flex', gap: '30px', fontWeight: 600 }}>
-          <a href="#about" style={{ color: '#e2e8f0' }}>About</a>
-          <a href="#experience" style={{ color: '#e2e8f0' }}>Experience</a>
-          <a href="#projects" style={{ color: '#e2e8f0' }}>Projects</a>
-          <a href="#contact" style={{ color: '#e2e8f0' }}>Contact</a>
-        </div>
+
+        <ul className={`navbar-links${menuOpen ? ' open' : ''}`}>
+          {LINKS.map(l => (
+            <li key={l.href}>
+              <a href={l.href} onClick={() => setMenuOpen(false)}>
+                {l.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+
+        <button
+          className="navbar-menu-btn"
+          onClick={() => setMenuOpen(o => !o)}
+          aria-label="Toggle menu"
+        >
+          {menuOpen ? <HiX size={20} /> : <HiMenuAlt3 size={20} />}
+        </button>
       </div>
     </nav>
   );

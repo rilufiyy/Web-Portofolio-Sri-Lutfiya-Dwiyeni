@@ -1,42 +1,93 @@
 import React from 'react';
 
-const About = () => {
-  return (
-    <section id="about" className="section container">
-      <h2 className="section-title">
-        <span className="text-gradient">01.</span> About Me
-      </h2>
-      <div className="glass-card" style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-        <p>
-          I am an <strong>AI Engineer</strong> with a strong mathematical foundation (B.Sc. Mathematics, Undip, GPA 3.60) and over a year of production experience building and deploying large-scale AI systems for media intelligence.
-        </p>
-        <p>
-          Recently, I have been focused on architecting end-to-end <strong>Agentic LLM pipelines</strong>, implementing Aspect-Based Sentiment Analysis (ABSA), and deploying asynchronous FastAPI backends with Apache Airflow orchestration on NVIDIA GPU infrastructure.
-        </p>
-        <p>
-          My technical expertise spans across Deep Learning, NLP, Computer Vision, and MLOps. I thrive in environments where I can build intelligent systems from research all the way to production deployment.
-        </p>
-        
-        <div>
-          <h3 style={{ marginTop: '20px', marginBottom: '15px', fontSize: '1.2rem', color: 'var(--accent-color)' }}>Technical Skills</h3>
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
-            <span className="badge">Python</span>
-            <span className="badge">SQL</span>
-            <span className="badge">Docker</span>
-            <span className="badge">FastAPI</span>
-            <span className="badge">PyTorch</span>
-            <span className="badge">TensorFlow</span>
-            <span className="badge">LangChain</span>
-            <span className="badge">Retrieval-Augmented Generation (RAG)</span>
-            <span className="badge">Agentic AI</span>
-            <span className="badge">Elasticsearch</span>
-            <span className="badge">PostgreSQL</span>
-            <span className="badge">Apache Airflow</span>
+const SKILL_GROUPS = [
+  {
+    title: 'LLM & Agentic AI',
+    tags: ['LangChain', 'RAG', 'ABSA', 'Groq LPU', 'Multi-Agent Systems', 'Prompt Engineering', 'Sentence Transformers', 'Apache Airflow'],
+  },
+  {
+    title: 'ML & Deep Learning',
+    tags: ['PyTorch', 'TensorFlow / Keras', 'LSTM', 'GRU', 'CNN', 'BERTopic', 'UMAP', 'HDBSCAN', 'Scikit-learn', 'ONNX Runtime (GPU)'],
+  },
+  {
+    title: 'Backend & Infrastructure',
+    tags: ['FastAPI', 'Docker', 'asyncio', 'MinIO (S3)', 'Redis', 'SendGrid', 'APScheduler'],
+  },
+  {
+    title: 'Databases',
+    tags: ['PostgreSQL', 'MongoDB', 'Elasticsearch', 'FAISS', 'Vector Databases'],
+  },
+  {
+    title: 'Speech & Multimodal',
+    tags: ['Whisper', 'Pyannote', 'LayoutLMv3', 'Donut', 'BLIP-2', 'Gemini API'],
+  },
+  {
+    title: 'Programming',
+    tags: ['Python', 'SQL', 'MATLAB', 'Git', 'Streamlit', 'Jupyter'],
+  },
+];
+
+const AWARDS = [
+  '🏆 MVP Award — Dibimbing.id',
+  '🥇 Best Final Project — Dibimbing.id',
+  '🎖 Top 50 / 644 Teams — Bangkit 2024',
+  '📄 HAKI Patent — LSTM-GWO (2025)',
+  '🥈 Silver Medal — ISSO 3 Math Olympiad',
+];
+
+const About = () => (
+  <section id="about" className="section">
+    <div className="container">
+      <div className="section-header fade-in-section">
+        <span className="section-label">About</span>
+        <h2 className="section-title">About Me</h2>
+      </div>
+
+      <div className="about-wrap fade-in-section">
+        <div className="about-body">
+          <p>
+            I am an <strong>AI Engineer</strong> with 1+ year of production experience building and
+            deploying large-scale AI systems for media intelligence at{' '}
+            <span className="about-hl">NoLimit Indonesia</span>.
+          </p>
+          <p>
+            I designed and shipped a <strong>4-agent LLM pipeline</strong>{' '}
+            (Analyst → Insight → Auditor → PPT Service) processing{' '}
+            <strong>100,000+ daily posts</strong> across 7 social media platforms using BERTopic
+            semantic clustering (UMAP + HDBSCAN), dual-LLM inference (GPT-4o-mini + Qwen
+            2.5-3B-Instruct), Elasticsearch async ETL, and Apache Airflow orchestration on{' '}
+            <strong>NVIDIA L40S GPU infrastructure</strong>.
+          </p>
+          <p>
+            Strong mathematical foundation —{' '}
+            <span className="about-hl">S1 Matematika, Undip, GPA 3.60</span>. Hands-on expertise
+            in Deep Learning (LSTM, GRU, CNN), NLP (ABSA, RAG, LangChain), and end-to-end
+            deployment (FastAPI, Docker, MinIO, PostgreSQL). Author of a{' '}
+            <strong>HAKI-registered patent</strong> on LSTM-GWO modeling (May 2025).
+          </p>
+
+          <div className="awards-row">
+            {AWARDS.map((a, i) => (
+              <span key={i} className="award-chip">{a}</span>
+            ))}
           </div>
         </div>
+
+        <div className="skills-col">
+          {SKILL_GROUPS.map((g, i) => (
+            <div key={i} className="skill-group">
+              <p className="sg-title">{g.title}</p>
+              <div className="sg-tags">
+                {g.tags.map((t, j) => (
+                  <span key={j} className="sg-tag">{t}</span>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
-    </section>
-  );
-};
+    </div>
+  </section>
+);
 
 export default About;
